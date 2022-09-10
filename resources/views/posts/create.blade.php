@@ -4,12 +4,18 @@
     Crea una nueva publicacion
 @endsection
 
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
+
 @section('contenido')
     <div class="md:flex md:items-center mt-10">
         <div class="md:w-1/2 px-10">
-           <form id="dropzone" class="dropzone border-dashed border-2 w-full h-96
-           rounded flex flex-col justify-center items-center" action="/imagenes">
-
+           <form id="dropzone" action="{{ route('imagenes.store') }}" 
+                    method="POST" enctype="multipart/form-data"
+           class="dropzone border-dashed border-2 w-full h-96
+           rounded flex flex-col justify-center items-center">
+           @csrf
            </form>
         </div>
         <div class="md:w-1/2 p-10  bg-white rounded-lg shadow-xl">

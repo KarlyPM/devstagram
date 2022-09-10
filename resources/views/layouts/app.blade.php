@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>DevStagram - @yield('titulo')</title>
-        <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+        @stack('styles')
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
     </head>
