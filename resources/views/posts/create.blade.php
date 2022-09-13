@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('titulo')
     Crea una nueva publicacion
@@ -19,7 +19,7 @@
            </form>
         </div>
         <div class="md:w-1/2 p-10  bg-white rounded-lg shadow-xl">
-            <form action="{{ route('register') }}" method="POST" novalidate>
+            <form action="{{ route('posts.store') }}" method="POST" novalidate>
                 @csrf
                 <div class="mb-5">
                     <label for="titulo" class="mb-2 block uppercase text-gray-500 font-bold">
@@ -60,11 +60,20 @@
                     @enderror
 
                 </div> 
+                <div class="mb-5">
+                    <!--'imagen' nmbre viene de BD.. _create_post table-->
+                    <input type="hidden" name="imagen"
+                    value="{{old('imagen')}}"/>
+                </div>
+                @error('imagen')
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2
+                    text-center">{{$message}}</p>
+                @enderror
                 <input type="submit"
                 value="Crear publicacion"
                 class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer
                 uppercase font-bold w-full p-3 text-white rounded-lg"
-            />                               
+                />                               
             </form>                
         </div>
     </div>
